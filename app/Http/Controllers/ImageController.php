@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -14,8 +15,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
-        return view('pages.images', compact('images'));
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -36,7 +36,15 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validation = $request->validate([
+        //     "src" => 'required'
+        // ]);
+
+        $store = new Image;
+        $store->src = $request->file('src')->hashName();
+        $store->save();
+        Storage::put('public/img', $request->file('src'));
+        return redirect('/');
     }
 
     /**

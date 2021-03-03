@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ImageController;
 use App\Models\Animal;
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Animals
 Route::get('/', function () {
     $animals = Animal::all();
     return view('welcome', compact('animals'));
 });
 
 Route::resource('animals', AnimalController::class);
+
+
+// Images
+Route::get('/pages/images', function () {
+    $images = Image::all();
+    return view('pages.images', compact('images'));
+});
 Route::resource('images', ImageController::class);
