@@ -15,7 +15,7 @@
             <tr>
                 <th scope="row">{{$img->id}}</th>
                 <td>
-                  <img height="100px" src="{{$img->src}}" alt="">
+                  <img height="100px" src="{{asset('storage/img/'.$img->src)}}" alt="">
                 </td>
             </tr>
           @endforeach

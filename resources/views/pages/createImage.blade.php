@@ -18,7 +18,6 @@
 
         <form action="/images" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('POST')
             <h3>Image : </h3>
             <input type="file" name="src" id="">
             <button type="submit" class="btn btn-success">ADD</button>

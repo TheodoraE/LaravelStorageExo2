@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animal;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AnimalController extends Controller
 {
@@ -24,7 +26,8 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        $images = Image::all();
+        return view('pages.createAnimals', compact('images'));
     }
 
     /**
@@ -35,7 +38,11 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Animal;
+        $store->name = $request->name;
+        $store->src = $request->src;
+        $store->save();
+        return redirect('/');
     }
 
     /**
@@ -78,8 +85,14 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Animal $animal)
+    public function destroy($id)
     {
-        //
+        $destroy = Animal::find($id);
+        $destroy->delete();
+        Storage::delete('public/img/'.$destroy->src);
+        $destroyImg = Image::find($id);
+        $destroyImg->delete();
+        Storage::delete('public/img/'.$destroyImg->src);
+        return redirect('/');
     }
 }

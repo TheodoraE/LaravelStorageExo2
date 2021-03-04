@@ -15,7 +15,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::all();
+        return view('pages.images', compact('images'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        return view('pages.createImage');
     }
 
     /**
@@ -44,7 +45,7 @@ class ImageController extends Controller
         $store->src = $request->file('src')->hashName();
         $store->save();
         Storage::put('public/img', $request->file('src'));
-        return redirect('/');
+        return redirect()->back();
     }
 
     /**

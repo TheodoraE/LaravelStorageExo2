@@ -25,10 +25,5 @@ Route::get('/', function () {
 
 Route::resource('animals', AnimalController::class);
 
-
 // Images
-Route::get('/pages/images', function () {
-    $images = Image::all();
-    return view('pages.images', compact('images'));
-});
 Route::resource('images', ImageController::class);

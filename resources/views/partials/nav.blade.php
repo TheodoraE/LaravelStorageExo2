@@ -8,7 +8,7 @@
           <a class="nav-link" href="/">Animaux <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pages/images">Images</a>
+          <a class="nav-link" href="/images">Images</a>
         {{-- </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
