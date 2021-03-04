@@ -10,6 +10,7 @@
             <th scope="col">Name</th>
             <th scope="col">Src</th>
             <th scope="col"> </th>
+            <th scope="col"> </th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
                 <td>{{$animal->name}}</td>
                 <td>
                   <img height="100px" src="{{asset('storage/img/'.$animal->src)}}" alt="">
+                </td>
+                <td>
+                  <a href="/animals-download/{{$animal->id}}" class="btn btn-info">DOWNLOAD</a>
                 </td>
                 <td>
                   <form action="/animals/{{$animal->id}}" method="POST">

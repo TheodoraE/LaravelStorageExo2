@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('welcome', compact('animals'));
 });
 
+Route::get('/animals-download/{id}', [AnimalController::class, 'download']);
 Route::resource('animals', AnimalController::class);
 
 // Images

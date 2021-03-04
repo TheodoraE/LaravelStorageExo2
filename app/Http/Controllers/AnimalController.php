@@ -95,4 +95,10 @@ class AnimalController extends Controller
         Storage::delete('public/img/'.$destroyImg->src);
         return redirect('/');
     }
+
+    public function download($id)
+    {
+        $down = Animal::find($id);
+        return Storage::download('public/img/'.$down->src);
+    }
 }
